@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      color: const Color(0xFF10171f),
       home: SplashScreen(),
     );
   }
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0x10171f),
+      backgroundColor: const Color(0xFF10171f),
       body: Stack(
         children: [
           // WebView
@@ -42,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
             },
             onPageFinished: (String url) {
               // WebView 加载完毕后，设置 webViewLoaded 为 true
-              Future.delayed(Duration(milliseconds: 1000), (){
+              Future.delayed(const Duration(milliseconds: 1000), (){
                 webViewLoaded = true;
                 setState(() {});
               });
@@ -55,7 +56,10 @@ class _SplashScreenState extends State<SplashScreen> {
             left: 0,
             right: 0,
             child: Center(
-              child: Image.asset('assets/ais.png'), // 替换为你的启动画面图片
+              child: Container(
+                color: const Color(0xFF10171f),
+                child: Image.asset('assets/ais.png', fit: BoxFit.cover, width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height,),
+              ), // 替换为你的启动画面图片
             ),
           )
         ],
