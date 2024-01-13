@@ -23,6 +23,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   bool webViewLoaded = false;
 
+  int currentProgress = 0;
+  String now = "";
+
   @override
   void initState() {
     super.initState();
@@ -36,11 +39,8 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
           // WebView
           WebView(
-            initialUrl: 'https://chatbasex.com/', // 设置你要加载的初始网址
+            initialUrl: 'http://193.23.55.22', // 设置你要加载的初始网址
             javascriptMode: JavascriptMode.unrestricted,
-            navigationDelegate: (NavigationRequest request) {
-              return NavigationDecision.navigate;
-            },
             onPageFinished: (String url) {
               // WebView 加载完毕后，设置 webViewLoaded 为 true
               Future.delayed(const Duration(milliseconds: 1000), (){
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Image.asset('assets/ais.png', fit: BoxFit.cover, width: MediaQuery.of(context).size.width, height: MediaQuery.of(context).size.height,),
               ), // 替换为你的启动画面图片
             ),
-          )
+          ),
         ],
       ),
     );
