@@ -48,6 +48,16 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   webview_flutter: ^3.0.0
 
+  #微信三方-分享、登录、小程序跳转等（不带支付）
+  fluwx_no_pay: ^3.8.1
+
+  #保存图片到相册
+  image_gallery_saver: ^2.0.3
+
+  #权限管理
+  permission_handler: ^8.1.6
+
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
