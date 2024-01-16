@@ -2,15 +2,8 @@
 <network-security-config>
     <base-config cleartextTrafficPermitted="true">
         <trust-anchors>
-            <!-- Trust user added CAs while debuggable only -->
-            <certificates src="user" />
+            <certificates src="system" />
         </trust-anchors>
     </base-config>
-    <!-- Debug-specific config for development builds -->
-    <debug-overrides>
-        <trust-anchors>
-            <certificates src="system" />
-            <certificates src="user" />
-        </trust-anchors>
-    </debug-overrides>
 </network-security-config>
+

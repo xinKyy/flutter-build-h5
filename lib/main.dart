@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 void main() {
   runApp(MyApp());
 }
@@ -22,7 +21,6 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   bool webViewLoaded = false;
-
   int currentProgress = 0;
   String now = "";
 
@@ -38,19 +36,26 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Stack(
         children: [
           // WebView
-          WebView(
-            initialUrl: 'http://193.23.55.22', // 设置你要加载的初始网址
-            javascriptMode: JavascriptMode.unrestricted,
-            onPageFinished: (String url) {
-              // WebView 加载完毕后，设置 webViewLoaded 为 true
-              Future.delayed(const Duration(milliseconds: 1000), (){
+          InAppWebView(
+            initialUrlRequest: URLRequest(
+              url: WebUri.uri(Uri.parse('http://43.207.192.40')), // 设置WebView打开的URL
+            ),
+            initialSettings: InAppWebViewSettings(
+              javaScriptEnabled: true,
+              mixedContentMode: MixedContentMode.MIXED_CONTENT_ALWAYS_ALLOW,
+            ),
+            onWebViewCreated: (InAppWebViewController controller) {
+              // WebView创建完成后可以执行一些操作
+            },
+            onLoadStop: (controller, url){
+              Future.delayed(Duration(milliseconds: 1000), (){
                 webViewLoaded = true;
                 setState(() {});
               });
             },
           ),
           // 启动画面
-          if(!webViewLoaded)Positioned(
+          if (!webViewLoaded)Positioned(
             top: 0,
             bottom: 0,
             left: 0,
